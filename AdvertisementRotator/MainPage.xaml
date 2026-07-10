@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Rotator;assembly=Syncfusion.Maui.Rotator"
+             xmlns:viewModel="clr-namespace:AdvertisementRotator"
+             x:Class="AdvertisementRotator.MainPage">
+
+    <ContentPage.BindingContext>
+        <viewModel:AdvertisementViewModel/>
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <syncfusion:SfRotator ItemsSource="{Binding AdvertisementCollection}" NavigationStripMode="Dots" EnableAutoPlay="True" EnableLooping="True" NavigationDelay="3000">
+            <syncfusion:SfRotator.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="15">
+                        <Border StrokeThickness="0" StrokeShape="RoundRectangle 25">
+                            <Grid>
+                                <!-- Advertisement Image -->
+                                <Image Source="{Binding Image}"
+                                   Aspect="AspectFit"/>
+                                <!-- Dark Overlay -->
+                                <Grid BackgroundColor="#70000000"/>
+                                <!-- Advertisement Content -->
+                                <VerticalStackLayout VerticalOptions="End" Padding="20" Spacing="8">
+                                    <Border HorizontalOptions="Start" BackgroundColor="#FF5722" StrokeThickness="0" Padding="10,5">
+                                        <Label Text="{Binding Offer}" TextColor="White" FontAttributes="Bold"/>
+                                    </Border>
+                                    <Label Text="{Binding Title}" FontSize="24" FontAttributes="Bold" TextColor="White"/>
+                                    <Label Text="{Binding Description}" FontSize="14" TextColor="White"/>
+                                    <Button Text="Shop Now" CornerRadius="20" WidthRequest="120" HorizontalOptions="Start"/>
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </syncfusion:SfRotator.ItemTemplate>
+        </syncfusion:SfRotator>
+    </Grid>
+</ContentPage>
